@@ -5,11 +5,12 @@ services:
   drone-server:
     image: drone/drone
     ports:
-      - 80:7000
-      - 443:7001
+      - 7000:80
+      - 7001:443
     volumes:
       - /var/lib/drone/:/data
-      - ${TLS_DIR}:/data/tls
+      - ${TLS_CERT_HOST_PATH}:${TLS_CERT_DOCKER_PATH}
+      - ${TLS_KEY_HOST_PATH}:${TLS_KEY_DOCKER_PATH}
     restart: always
     environment:
       - DRONE_OPEN=false
@@ -20,6 +21,6 @@ services:
       - DRONE_GITHUB_CLIENT_ID=${DRONE_GITHUB_CLIENT_ID}
       - DRONE_GITHUB_CLIENT_SECRET=${DRONE_GITHUB_CLIENT_SECRET}
       - DRONE_RPC_SECRET=${DRONE_RPC_SECRET}
-      - DRONE_TLS_CERT=${TLS_CERT_PATH}
-      - DRONE_TLS_KEY=${TLS_KEY_PATH}
+      - DRONE_TLS_CERT=${TLS_CERT_DOCKER_PATH}
+      - DRONE_TLS_KEY=${TLS_KEY_DOCKER_PATH}
 ...
