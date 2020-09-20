@@ -1,4 +1,4 @@
-...
+---
 version: "3.8"
 
 services:
@@ -22,4 +22,4 @@ services:
       - DRONE_RPC_SECRET=${DRONE_RPC_SECRET}
       - DRONE_TLS_CERT=${TLS_CERT_PATH}
       - DRONE_TLS_KEY=${TLS_KEY_PATH}
----
+...
